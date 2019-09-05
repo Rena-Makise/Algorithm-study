@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": "kakaojava_4f7ffb86"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "openchat.Solution",
+            "projectName": "kakaojava_4f7ffb86"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "failure.Solution",
+            "projectName": "kakaojava_4f7ffb86"
+        }
+    ]
+}
