@@ -20,6 +20,7 @@ class Solution {
     }
 
     public static int[] solution(String msg) {
+        // A ~ Z까지 담을 해시맵
         HashMap<String, Integer> map = new HashMap<>();
         char c = 'A';
         int n = 1;

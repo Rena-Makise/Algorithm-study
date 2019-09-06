@@ -1,28 +1,5 @@
 import java.util.*;
 
-class Ticket implements Comparable<Ticket> {
-    String dep;
-    String des;
-    boolean use;
-
-    public Ticket (String dep, String des) {
-        this.dep = dep;
-        this.des = des;
-        this.use = false;
-    }
-
-    @Override
-    public int compareTo(Ticket t) {
-        int comp = this.des.compareTo(t.des);
-
-        if (comp != 0) {
-            return comp;
-        } else {
-            return this.dep.compareTo(t.dep);
-        }
-    }
-}
-
 class Solution {
     static List<String> list = new ArrayList<>();
     static String route = "";
@@ -55,7 +32,7 @@ class Solution {
             if(s.equals(end) && !visit[i]) {
                 visit[i] = true;
                 dfs(tickets, e, cnt +1);
-                // 지금까지의 경뢰 외에 중간에 다르나 경로로도 갈 가능성이 있으므로
+                // 지금까지의 경로 외에 중간에 다르나 경로로도 갈 가능성이 있으므로
                 // dfs의 호출이 종료되면 visit과 route에서 현재 방문 위치를 빼 줘야 한다.
                 visit[i] = false;
                 route = route.substring(0, route.length() - 4); // 공항명 3글자 + 콤마 = 4

@@ -12,6 +12,13 @@ class Solution {
                 { 1, 1, 1, 0, 0, 0, 0, 0, 0, 5 } }));
     }
 
+
+    /**
+     * 블록을 채울 수 있는지 위 검사
+     * @param row 세로좌표 - y
+     * @param col 가로좌표 - x
+     * @return
+     */
     static boolean canFill(int row, int col) {
         for (int i = 0; i < row; i++) {
             if (Board[i][col] != 0) 
@@ -20,19 +27,27 @@ class Solution {
         return true;
     }
 
+    /**
+     *  블록 찾기
+     * @param row 세로길이
+     * @param col 가로길이
+     * @param h 찾을 크기 높이
+     * @param w 찾을 크기 너비
+     * @return
+     */
     static boolean find(int row, int col, int h, int w) {
         int emptyCnt = 0;
         int lastValue = -1;
         for (int r = row; r < row + h; ++r) {
             for (int c = col; c < col + w; ++c) {
                 if (Board[r][c] == 0) {
-                    if (!canFill(r, c))
+                    if (!canFill(r, c))  // 먄약 채울 수 없으면
                         return false;
-                    if (++emptyCnt > 2)
+                    if (++emptyCnt > 2)  // 만약 빈 공간이 2개가 넘어가면
                         return false;
                 }
                 else {
-                    if (lastValue != -1 && lastValue != Board[r][c])
+                    if (lastValue != -1 && lastValue != Board[r][c])  // 만약 최근 블록과 다른 블록이 나타나면
                         return false;
                     lastValue = Board[r][c];
                 }
@@ -41,7 +56,7 @@ class Solution {
 
         for (int r = row; r < row + h; ++r)
             for (int c = col; c < col + w; ++c)
-                Board[r][c] = 0;
+                Board[r][c] = 0;  // 0으로 블록을 없애준다.
 
         return true;
     }
@@ -64,7 +79,7 @@ class Solution {
                 }
             }
             answer += cnt;
-        } while (cnt != 0);
+        } while (cnt != 0); // 더 이상 만족하는 블록이 없을 때 까지.
         
         return answer;
     }

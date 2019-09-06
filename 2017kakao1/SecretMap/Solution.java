@@ -27,6 +27,7 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         char[] binaryStr = Integer.toBinaryString(num).toCharArray();
 
+        // 앞쪽이 빌 경우 공백을 채워주기 위해서
         int length = n - binaryStr.length;
         for (int i = 0; i < length; ++i) {
             sb.append(" ");
@@ -44,6 +45,7 @@ class Solution {
         String[] answer = new String[n];
 
         for (int i = 0; i < n; ++i) {
+            // 두 수의 OR연산
             answer[i] = convert(arr1[i] | arr2[i], n);
         }
 

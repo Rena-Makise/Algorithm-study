@@ -44,9 +44,10 @@ class Solution {
             String arr[] = s.split(" ");
             try {
                 // 시간 계산을 간단히 처리하기 위해서 모두 시작시각, 종료시각을 long으로 처리
+                // getTime은 Date를 밀리세컨드로 변환해서 long형 숫자 데이터로 반환
                 long endedDtm = dt.parse(arr[0] + " " + arr[1]).getTime();
                 //System.out.println("endedDtm = "+endedDtm);
-                // 실행 시간 처리
+                // 실행 시간 처리 (1s = 1000ms)
                 long proceDtm = (long)(Double.parseDouble(arr[2].replace("s", "")) * 1000);
                 //System.out.println("proceDtm = "+proceDtm);
                 long startDtm = endedDtm - proceDtm + 1;

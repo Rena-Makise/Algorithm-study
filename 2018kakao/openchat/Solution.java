@@ -15,7 +15,7 @@ class Solution
 
     public static String[] solution(String[] record) 
     {
-        Map<String, String> idMap = new HashMap<>();
+        Map<String, String> idMap = new HashMap<>(); // 유저 목록
         List<String[]> tmp = new LinkedList<>(); // Change를 제외한 로그
 
         for (String records : record) 
@@ -27,7 +27,7 @@ class Solution
                 tmp.add(keyWord);
             } else if (keyWord[0].equals("Change")) 
             {
-                idMap.put(keyWord[1], keyWord[2]);
+                idMap.put(keyWord[1], keyWord[2]); // Change시에는 유저에만 반영
             } else 
             {
                 tmp.add(keyWord);

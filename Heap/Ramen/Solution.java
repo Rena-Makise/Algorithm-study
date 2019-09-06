@@ -39,7 +39,7 @@ class Solution {
         }
         while (stock < k) {
             for (int i = 0; i < list.size(); ++i) {
-                if (stock >= list.get(i).date) {
+                if (stock >= list.get(i).date) { // 만약 남은 양이 해당 일자보다 적으면 그날까지 기다릴 수가 없다....
                     stock += list.get(i).supply;
                     list.remove(i);
                     answer++;

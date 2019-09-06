@@ -17,6 +17,7 @@ class Solution {
         int curIdx = 0;
         String tempNum = "";
 
+        // 문자열을 문자로
         for (char c : dartResult.toCharArray()) {
             if (Character.isDigit(c))
                 tempNum = tempNum + c;

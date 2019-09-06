@@ -16,7 +16,7 @@ class Stage implements Comparable<Stage> {
         if(n.failure > this.failure)
             return 1;
         else if(n.failure == this.failure)
-            return this.stageNum - n.stageNum;
+            return this.stageNum - n.stageNum; // 실패율이 같다면 작은 번호의 스테이지가 먼저
         else
             return -1;
     }
@@ -44,8 +44,8 @@ class Solution {
      */
     public static int[] solution(int N, int[] stages) {
         int[] answer = new int[N];
-        int[] clear = new int[N];
-        int[] fail = new int[N];
+        int[] clear = new int[N]; // 각 스테이지별 클리어한 유저 수
+        int[] fail = new int[N]; // 각 스테이지별 실패한 유저 수
         Arrays.sort(stages);
 
 
@@ -53,31 +53,34 @@ class Solution {
         {
             if(N >= stage)
             {
-                fail[stage - 1]++;
+                fail[stage - 1]++; // 현재 스테이지는 실패
+                // 이전 스테이지까지는 전부 성공
                 for(int i = 0; i < stage; ++i)
                     clear[i]++;
             }
             else
             {
+                // stage가 N보다 클 경우에는 모든 스테이지를 클리어했다는 뜻이므로.
                 for(int i = 0; i < N; ++i)
                     clear[i]++;
             }
         }
 
+        // 각 스테이지별 정보를 담을 리스트
         List<Stage> list = new ArrayList<>();
         for(int i = 0; i < N; ++i)
         {
             double failure;
-            int player = clear[i] + fail[i];
-            if(player != 0)
-                failure = (double)fail[i]/player;
+            int player = clear[i] + fail[i]; // 각 층별 플레이어
+            if(player != 0) // 해당 층에 사람이 있으면
+                failure = (double)fail[i]/player; // 실패율 생성
             else
-                failure = 0;
+                failure = 0; // 사람 없으면 실패율 0 (문제 조건)
 
             list.add(new Stage(i + 1, failure));
         }
 
-        Collections.sort(list);
+        Collections.sort(list);  // 실패율이 높은 스테이지부터 내림차순으로 정렬
         for(int i = 0; i < N; ++i)
             answer[i] = list.get(i).stageNum;
 

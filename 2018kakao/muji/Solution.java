@@ -53,20 +53,20 @@ class Solution {
         int i = 0; // 루프문 idx
         for (Food food : foods)
         {
-            long diff = food.time - preTime;
-            if (diff != 0)
+            long diff = food.time - preTime; // 현재 음식의 먹는데 걸리는 시간에서 이전 음식을 먹는데 걸리는 시간을 제외
+            if (diff != 0) // 차이가 없을 경우 이미 반영되었으므로 패스
             {
-                long spend = diff * remainFood;
-                if (spend <= k)
+                long spend = diff * remainFood;  // 차이에서 남은 음식의 수만큼 곱한다.
+                if (spend <= k) // 만약 k보다 작다면
                 {
-                    k -= spend;
-                    preTime = food.time;
+                    k -= spend; // k에서 걸리는 시간 모두 날림
+                    preTime = food.time;  
                 }
                 else
                 {
-                    k %= remainFood;
-                    foods.subList(i, food_times.length).sort(CompIdx);
-                    return foods.get(i + (int)k).idx;
+                    k %= remainFood; // 나머지를 구해서
+                    foods.subList(i, food_times.length).sort(CompIdx); // 다시 idx 원상복귀 시킨 후에
+                    return foods.get(i + (int)k).idx; // k초 다음으로 먹어야 할 음식의 idx 추출
                 }
             }
             ++i;

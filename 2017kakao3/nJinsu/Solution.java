@@ -7,6 +7,12 @@ class Solution {
         System.out.println(solution(16, 16, 2, 2));
     }
 
+    /**
+     * 진법 변환 코드
+     * @param n
+     * @param num
+     * @return
+     */
     static String conversion(int n, int num) {
         String retVel = "";
         if (num == 0) retVel = "0";

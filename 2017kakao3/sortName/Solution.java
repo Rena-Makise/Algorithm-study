@@ -18,13 +18,15 @@ class Solution {
         Arrays.sort(files, new Comparator<String>() {
             @Override
             public int compare(String s1, String s2) {
+                // HEAD부 분리
                String head1 = s1.split("[0-9]")[0];
                s1 = s1.replace(head1, "");
                head1 = head1.toUpperCase();
 
+               // NUM부 분리
                String strNum = "";
                for (char c : s1.toCharArray()) {
-                   if (Character.isDigit(c) && strNum.length() < 5) {
+                   if (Character.isDigit(c) && strNum.length() <= 5) {
                        strNum += c;
                    } else {
                        break;
@@ -32,13 +34,15 @@ class Solution {
                }
                int num1 = Integer.parseInt(strNum);
 
+                // HEAD부 분리
                String head2 = s2.split("[0-9]")[0];
                s2 = s2.replace(head2, "");
                head2 = head2.toUpperCase();
 
+                // NUM부 분리
                strNum = "";
                for (char c : s2.toCharArray()) {
-                   if(Character.isDigit(c) && strNum.length() < 5) {
+                   if(Character.isDigit(c) && strNum.length() <= 5) {
                        strNum += c;
                    } else {
                        break;

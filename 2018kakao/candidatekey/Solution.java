@@ -9,7 +9,14 @@ class Solution {
         System.out.println("후보키 : " + result);
     }
 
-    // 유일성 체크
+    /**
+     * 유일성 체크
+     * @param realtion  데이터
+     * @param rowsize  데이터 갯수
+     * @param colsize  데이터 속성 갯수
+     * @param subset  부분집합 원소 갯수
+     * @return
+     */
     public static boolean check(String[][] realtion, int rowsize, int colsize, int subset) {
         for (int a = 0; a < rowsize - 1; ++a)
         {
@@ -33,11 +40,13 @@ class Solution {
 
     public static int solution(String[][] relation) {
         int answer = 0;
-        int rowsize = relation.length;
-        int colsize = relation[0].length;
+        int rowsize = relation.length; // 데이터 갯수
+        int colsize = relation[0].length; // 데이터 속성 갯수
         List<Integer> candidates = new LinkedList<Integer>();
 
         // 먼저 유일성을 체크
+        // 속성이 각각 반영될 수도 있고 반영되지 않을 수도 있다.  (1 or 0)
+        // 1 << colsize  =  2^colsize
         for (int i = 1; i < 1 << colsize; ++i)
         {
             if (check(relation, rowsize, colsize, i) == true)
