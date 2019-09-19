@@ -35,14 +35,17 @@ class Solution {
         int l = i * 2 + 1;
         int r = i * 2 + 2;
 
+        // 왼쪽 자식노드
         if (l < n && array[p] < array[l]) {
             p = l;
         }
 
+        // 오른쪽 자식노드
         if (r < n && array[p] < array[r]) {
             p = r;
         }
 
+        // 부모노드 < 자식노드 이면...
         if (i != p) {
             swap(array, p, i);
             heapify(array, n, p);
