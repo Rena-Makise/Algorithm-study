@@ -28,7 +28,7 @@ class Solution {
         if (n <= 2)
             return 1;
         
-        last1 = 1;
+        last1 = 0;
         last2 = 1;
 
         for (int i = 2; i < n; ++i) {
